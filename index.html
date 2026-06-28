@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk Dev Jr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="btn-dark-mode" class="alternador-tema" onclick="alternarTema()">🌙 Modo Escuro</button>
+
+    <header>
+        <h1>👨‍💻 Painel de Suporte ao Cliente</h1>
+    </header>
+    
+    <main class="container">
+        <section class="secao-cadastro">
+            <h2>Abrir Novo Chamado</h2>
+            <form id="form-chamado">
+                <div class="campo">
+                    <label for="cliente">Nome do Cliente</label>
+                    <input type="text" id="cliente" required placeholder="Ex: Maria Silva">
+                </div>
+
+                <div class="campo">
+                    <label for="descricao">Descrição do Problema</label>
+                    <textarea id="descricao" required placeholder="Ex: Não consigo acessar minha conta após a atualização"></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="prioridade">Prioridade</label>
+                    <select id="prioridade">
+                        <option value="baixa">Baixa 🟢</option>
+                        <option value="media">Média 🟡</option>
+                        <option value="alta">Alta 🔴</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-principal">Criar Chamado</button>
+            </form>
+        </section>
+
+        <section class="barra-filtros">
+            <span>Filtrar por prioridade:</span>
+            <div class="grupo-filtros">
+                <button class="btn-filtro ativo" onclick="filtrarPrioridade('todos')">Todos 🌐</button>
+                <button class="btn-filtro" onclick="filtrarPrioridade('alta')">Alta 🔴</button>
+                <button class="btn-filtro" onclick="filtrarPrioridade('media')">Média 🟡</button>
+                <button class="btn-filtro" onclick="filtrarPrioridade('baixa')">Baixa 🟢</button>
+            </div>
+        </section>
+
+        <section class="painel">
+            <div class="coluna">
+                <div class="coluna-topo">
+                    <h3>Novos</h3>
+                    <span id="total-novos" class="contador">0</span>
+                </div>
+                <div id="lista-novos" class="lista-cartoes"></div>
+            </div>
+
+            <div class="coluna">
+                <div class="coluna-topo">
+                    <h3>Em Atendimento</h3>
+                    <span id="total-atendimento" class="contador">0</span>
+                </div>
+                <div id="lista-atendimento" class="lista-cartoes"></div>
+            </div>
+
+            <div class="coluna">
+                <div class="coluna-topo">
+                    <h3>Resolvidos</h3>
+                    <span id="total-resolvidos" class="contador">0</span>
+                </div>
+                
+                <button id="btn-limpar-todos" class="btn-limpar-toda-coluna" onclick="limparTodosResolvidos()">Limpar Histórico 🧹</button>
+                
+                <div id="lista-resolvidos" class="lista-cartoes"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
